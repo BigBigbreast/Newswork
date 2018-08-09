@@ -16,26 +16,26 @@ public class test {
         ResultSet rs = null;
         
         try {
-            // 获取连接
+            // 鑾峰彇杩炴帴
             conn = JDBCutil.getConnection();
             
-            // 编写sql
+            // 缂栧啓sql
             String sql = "insert into User(username,userpass) values (?,?)";
             
-            // 创建语句执行者
+            // 鍒涘缓璇彞鎵ц鑰�
             st= conn.prepareStatement(sql);
             
-            //设置参数
+            //璁剧疆鍙傛暟
             st.setString(1, "tenfee");
             st.setString(2, "123456");
             
-            // 执行sql
+            // 鎵цsql
             int i = st.executeUpdate();
             
             if(i==1) {
-                System.out.println("数据添加成功！");
+                System.out.println("数据插入成功");
             }else {
-                System.out.println("数据添加失败！");
+                System.out.println("数据插入失败");
             }
             
         } catch (SQLException e) {
