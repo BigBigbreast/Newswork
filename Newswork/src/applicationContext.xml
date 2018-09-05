@@ -69,6 +69,24 @@
 				<ref bean="userdao"/>
 			</property>
 		</bean>
+		
+		<bean id="login" class="Action.UserAction">
+			<property name="userService">
+				<ref bean="userService"/>
+			</property>
+		</bean>
+		
+		<bean id="checkname" class="Action.CheckNameaction">
+			<property name="userService">
+				<ref bean="userService"/>
+			</property>
+		</bean>
+		
+		<bean id="register" class="Action.RegisterAction">
+			<property name="userService">
+				<ref bean="userService"/>
+			</property>
+		</bean>
 		<!--
 		<bean id="userDao" class="ssh.UserDaoimpl">
 			<property name="hibernateTemplate">

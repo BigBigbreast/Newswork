@@ -46,8 +46,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if((username.val()=="")||(userpass.val()=="")){
 					alert("Sorry please input you info");
 					return false;
-				}
-				return true;
+				}else{
+					var name=username.val();
+					var pass=userpass.val();
+					$.ajax({
+					type:"post",
+					url:"/Newswork/login.action",
+					async:true,
+					data:{
+						"username":name,
+						"userpass":pass
+					},
+					success:function(result){
+						var user=$.parseJSON(result);
+						if(user==null){
+							alert("Incorrect user name and password input");
+							url=url = "index.jsp";
+							window.location.href=url;			
+						}else{
+							alert("Login successfully");
+							url=url = "NewsBody.jsp?username="+user.username;
+							window.location.href=url;
+						}
+					}
+				})
+				}				
 			});
 			
 			
@@ -59,13 +82,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<div align="center" style="width: 100%;height: 100%;">
-    		<div align="left" style="padding-top: 100px">
+    		<div align="center" style="padding-top: 100px">
     			<h1>Welcome to News management System!</h1>
     			<form id="form" action="" style="padding-top: 50px" method="post">
-    				<font>Username:&nbsp;</font><input type="text" id="username"><span id="uname" style="color: red"></span><br>
-    				<font >Password:&nbsp;</font><input type="password" id="password"><span id="upass" style="color: red"></span><br>
+    				<font>Username:&nbsp;</font><input type="text" name="username" id="username"/><div ><span id="uname" style="color: red;padding-right: 5px;" ></span></div>
+    				<font >Password:&nbsp;</font><input type="password" name="userpass" id="password"/><div ><span id="upass" style="color: red;padding-right: 5px"></span></div>
     				<br>
-    				<input type="submit" id="btn" value="Submit">
+    				<input type="submit" id="btn" value="Sign in"><br>
+    				<a href="Register.jsp">Create an account</a>
     			</form>
     		</div>
     	</div>
