@@ -59,7 +59,17 @@
 				<ref bean="sessionFactory"/>
 			</property>
 		</bean>
-		
+		<bean id="userdao" class="Dao.UserDaoimpl">
+			<property name="hibernatetemplate">
+				<ref bean="hibernateTempalte"/>
+			</property>
+		</bean>
+		<bean id="userService" class="Service.UserServiceimpl">
+			<property name="userdao">
+				<ref bean="userdao"/>
+			</property>
+		</bean>
+		<!--
 		<bean id="userDao" class="ssh.UserDaoimpl">
 			<property name="hibernateTemplate">
 				<ref bean="hibernateTempalte"/>
@@ -71,31 +81,30 @@
 				<ref bean="userDao"/>
 			</property>
 		</bean>
-		
-		<bean id="hbm" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-			<property name="sessionFactory">
-				<ref bean="sessionFactory"/>
-			</property>
-		</bean>
-		
-		<tx:advice id="tx" transaction-manager="hbm">
-			<tx:attributes>
-				<tx:method name="register"/>
-				<tx:method name="modify*"/>
-				<tx:method name="*" propagation="SUPPORTS" read-only="true"/>
-			</tx:attributes>
-		</tx:advice>
-		
-		<aop:config>
-			<aop:pointcut expression="execution(* Service..*.register(..))" id="pc"/>
-			<aop:advisor advice-ref="tx" pointcut-ref="pc"/>
-		</aop:config>
-		
+
 		<bean id="registeraction" class="ssh.Regiseraction">
 			<property name="userService">
 				<ref bean="userService"/>
 			</property>
 		</bean>
+		  -->
+		  <bean id="hbm" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		  </bean>
+		  
+		<tx:advice id="tx" transaction-manager="hbm">
+			<tx:attributes>
+				<!-- <tx:method name="register"/> -->
+				<tx:method name="register*"/>
+				<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true"/> -->
+			</tx:attributes>
+		</tx:advice>
 		
+		<aop:config>
+			<aop:pointcut expression="execution(* Service..*.*(..))" id="pc"/>
+			<aop:advisor advice-ref="tx" pointcut-ref="pc"/>
+		</aop:config>
 		
 </beans>	
