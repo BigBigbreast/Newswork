@@ -17,6 +17,7 @@
 		
 		
 		
+
 		<context:property-placeholder location="classpath:/propert.properties"/>
 		
 		<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -101,6 +102,12 @@
 		</bean>
 		
 		<bean id="newsinsert" class="Action.Newsaction">
+			<property name="newsService">
+				<ref bean="newsService"/>
+			</property>
+		</bean>
+		
+		<bean id="shownews" class="Action.Shownewsaction">
 			<property name="newsService">
 				<ref bean="newsService"/>
 			</property>

@@ -101,4 +101,6 @@ public class Newsaction {
 		return "success";
 	}
 
+	
+	
 }

@@ -19,6 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript">
+			var exp='<%=(String)request.getAttribute("boolean")%>';
+			if(exp!="false"){
+				window.document.location.href = "shownews.action";
+			}
 		function validate()
         {
             var page = document.getElementsByName("page")[0].value;
@@ -27,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             {
                 alert("你输入的页数大于最大页数，页面将跳转到首页！");
                 
-                window.document.location.href = "lookbooks";                
+                window.document.location.href = "shownews.action";                
                 return false;
             }           
             return true;
@@ -43,17 +47,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>
     <a style="padding-left: 120px" href="index.jsp">首页</a><a style="padding-left: 10px" href="login.jsp">登录</a>
     <hr>
-    <div style="height:auto;padding-left: 100px">
-    	dsadsafdsafdsaf<br>
-dsadsafdsafdsaf<br>
-dsadsafdsafdsaf<br>
-dsadsafdsafdsaf<br>
-dsadsafdsafdsaf<br>
-v
-dsadsafdsafdsaf<br>
-dsadsafdsafdsaf<br>
-    </div>
-    <hr>
+    	<div style="height:auto;padding-left: 150px">
+				
+				<s:iterator value="#session.news" var="book">
+					<h4>
+					<s:property value="#book.id"/>&nbsp;	<s:property value="#book.newstitle" /><br>			
+				    </h4>
+				</s:iterator>
+    	</div>
+   	 <hr>
     <div>
     <center>
 
@@ -70,19 +72,19 @@ dsadsafdsafdsaf<br>
         </s:if>
 
 						<s:else>
-							<a href="lookbooks.action">首页</a>
+							<a href="shownews.action">首页</a>
             &nbsp;&nbsp;&nbsp;
             
-							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
 						</s:else>
 
 						<s:if
 							test="#request.pageBean.currentPage != #request.pageBean.totalPage">
 							
-							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
             &nbsp;&nbsp;&nbsp;
             
-							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
 						</s:if>
 						<s:else>
             下一页&nbsp;&nbsp;&nbsp;尾页
@@ -90,7 +92,7 @@ dsadsafdsafdsaf<br>
 					</center>
 					<br>
 					<center>
-						<form action="lookbooks" onsubmit="return validate();">
+						<form action="shownews" onsubmit="return validate();">
 							<font size="4">跳转至</font> <input type="text" size="2" name="page">页
 							<input type="submit" value="跳转">
 						</form>

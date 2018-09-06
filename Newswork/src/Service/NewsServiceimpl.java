@@ -1,5 +1,9 @@
 package Service;
 
+import java.util.List;
+
+import org.hibernate.Transaction;
+
 import Dao.NewsDao;
 import Entity.News;
 import Util.PageBean;
@@ -22,7 +26,17 @@ public class NewsServiceimpl implements NewsService{
 
 	@Override
 	public PageBean getcurrentnews(int currentpage) {
-		return null;
+		PageBean pageBean=new PageBean();
+		int allrows=newsDao.getallrows();
+		int totalPage=pageBean.getTotalPages(4, allrows);
+		int page=pageBean.getCurPage(currentpage);
+		int offset=pageBean.getCurrentPageOffset(4, page);
+		List<News> news=newsDao.getcurrentnews(offset);
+		pageBean.setList(news);
+		pageBean.setAllRows(allrows);
+	    pageBean.setCurrentPage(page);
+	    pageBean.setTotalPage(totalPage);
+		return pageBean;
 	}
 	
 }

@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div style="height:500px;padding-left: 100px">
     	<div style="width:200px;height:450px;border:1px solid #000;float: left" >
 					<br>
-					<li><a href="">创建新闻</a>
+					<li><a href="CreateNews.jsp">创建新闻</a>
 					<br>
 					</div>
     	<div style="width:500px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    

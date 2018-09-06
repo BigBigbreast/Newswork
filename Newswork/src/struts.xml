@@ -24,5 +24,9 @@
 		<action name="insertnews" class="Action.Newsaction" method="insertnews">
 			<result name="success">/Shownews.jsp</result>
 		</action>
+		
+		<action name="shownews" class="Action.Shownewsaction" method="shownews">
+			<result name="success">/index.jsp</result>
+		</action>
 	</package>
 </struts>
