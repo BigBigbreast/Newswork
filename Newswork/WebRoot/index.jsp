@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,80 +19,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript">
-	
-		$(function(){
-			var username=$("#username");
-			var userpass=$("#password");
-			username.blur(function(){
-				var textname=username.val();
-				var uname=$("#uname");
-				if(textname==""){
-					uname.text("Please input your username");
-				}else{
-					uname.text("");
-				}
-			});
-			userpass.blur(function(){
-				var textpass=userpass.val();
-				var upass=$("#upass");
-				if(textpass==""){
-					upass.text("Please input your password");
-				}else{
-					upass.text("");
-				}
-			});
+		function validate()
+        {
+            var page = document.getElementsByName("page")[0].value;
+                
+            if(page > "<s:property value='%{#request.pageBean.totalPage}'/>")
+            {
+                alert("你输入的页数大于最大页数，页面将跳转到首页！");
+                
+                window.document.location.href = "lookbooks";                
+                return false;
+            }           
+            return true;
+        }    
 			
-			var btn=$("#btn");
-			btn.click(function(){
-				if((username.val()=="")||(userpass.val()=="")){
-					alert("Sorry please input you info");
-					return false;
-				}else{
-					var name=username.val();
-					var pass=userpass.val();
-					$.ajax({
-					type:"post",
-					url:"/Newswork/login.action",
-					async:true,
-					data:{
-						"username":name,
-						"userpass":pass
-					},
-					success:function(result){
-						var user=$.parseJSON(result);
-						if(user==null){
-							alert("Incorrect user name and password input");
-							url = "index.jsp";
-							window.location.href=url;			
-						}else{
-							alert("Login successfully");
-							url = "NewsBody.jsp?username="+user.username;
-							window.location.href=url;
-						}
-					}
-				})
-				}				
-			});
-			
-			
-			
-		});
-		
 	</script>
   </head>
   
   <body>
-    	<div align="center" style="width: 100%;height: 100%;">
-    		<div align="center" style="padding-top: 100px">
-    			<h1>Welcome to News management System!</h1>
-    			<form id="form" action="" style="padding-top: 50px" method="post">
-    				<font>Username:&nbsp;</font><input type="text" name="username" id="username"/><div ><span id="uname" style="color: red;padding-right: 5px;" ></span></div>
-    				<font >Password:&nbsp;</font><input type="password" name="userpass" id="password"/><div ><span id="upass" style="color: red;padding-right: 5px"></span></div>
-    				<br>
-    				<input type="submit" id="btn" value="Sign in"><br>
-    				<a href="Register.jsp">Create an account</a>
-    			</form>
-    		</div>
-    	</div>
+    	<div>
+  	<div align="left" style="padding-left:100px"><img src="image/news.jpg"></div>
+    </div>
+    <br>
+    <a style="padding-left: 120px" href="index.jsp">首页</a><a style="padding-left: 10px" href="login.jsp">登录</a>
+    <hr>
+    <div style="height:auto;padding-left: 100px">
+    	dsadsafdsafdsaf<br>
+dsadsafdsafdsaf<br>
+dsadsafdsafdsaf<br>
+dsadsafdsafdsaf<br>
+dsadsafdsafdsaf<br>
+v
+dsadsafdsafdsaf<br>
+dsadsafdsafdsaf<br>
+    </div>
+    <hr>
+    <div>
+    <center>
+
+						<font size="4">当前<font color="red"><s:property
+									value="#request.pageBean.currentPage" /></font>页
+						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
+									value="#request.pageBean.totalPage" /></font>页
+						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
+									value="#request.pageBean.allRows" /></font>条记录
+						</font><br> <br>
+
+						<s:if test="#request.pageBean.currentPage == 1">
+            首页&nbsp;&nbsp;&nbsp;上一页
+        </s:if>
+
+						<s:else>
+							<a href="lookbooks.action">首页</a>
+            &nbsp;&nbsp;&nbsp;
+            
+							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
+						</s:else>
+
+						<s:if
+							test="#request.pageBean.currentPage != #request.pageBean.totalPage">
+							
+							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
+            &nbsp;&nbsp;&nbsp;
+            
+							<a	href="lookbooks.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
+						</s:if>
+						<s:else>
+            下一页&nbsp;&nbsp;&nbsp;尾页
+        </s:else>
+					</center>
+					<br>
+					<center>
+						<form action="lookbooks" onsubmit="return validate();">
+							<font size="4">跳转至</font> <input type="text" size="2" name="page">页
+							<input type="submit" value="跳转">
+						</form>
+					</center>
+    </div>
+    <br>
+    <div align="center">Copyright 2018 郑州大学大三实训 版权所有 </div>
   </body>
 </html>

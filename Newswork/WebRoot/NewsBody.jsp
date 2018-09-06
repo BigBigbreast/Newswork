@@ -23,9 +23,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h2 >Welcome you! <%=request.getParameter("username") %></h2>
   	<div>
-  	<div align="center"><img src="image/news.jpg"></div>
+  	<div align="left" style="padding-left:100px"><img src="image/news.jpg"></div>
     </div>
+    <br>
+    <a style="padding-left: 120px" href="index.jsp">首页</a><a style="padding-left: 10px" href="login.jsp">登录</a>
+    <hr>
+    <div style="height:500px;padding-left: 100px">
+    	<div style="width:200px;height:400px;border:1px solid #000;float: left" >
+					<br>
+					<li><a href="CreateNews.jsp">创建新闻</a>
+					<br>
+					</div>
+    	<div style="width:500px;height:400px;border:1px solid #000;float: left;padding-left:100px ">    
+    	<h3 >您好， <%=request.getParameter("username") %>！欢迎进入新闻系统</h3>
+    	</div>
+
+    </div>
+    <hr>
+    <div align="center">Copyright 2018 郑州大学大三实训 版权所有 </div>
   </body>
 </html>
