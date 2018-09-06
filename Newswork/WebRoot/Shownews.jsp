@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -77,40 +78,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     		<form action="insertnews" method="post">
     			<br>
-    			<font>编  &nbsp; &nbsp;  &nbsp; &nbsp;号:   &nbsp; &nbsp;</font><input type="text" name="newsid" style="width: 150px">
+    			<font>编  &nbsp; &nbsp;  &nbsp; &nbsp;号:   &nbsp; &nbsp;</font><s:property value="#session.news.newsid" />
     			<br>
     			<br>
-    			<font>标 &nbsp; &nbsp;  &nbsp; &nbsp;题:   &nbsp; &nbsp;</font><input type="text" id="newstitle" name="newstitle" style="width: 150px">
-    			<span id="title" style="color: red"></span>	
+    			<font>标 &nbsp; &nbsp;  &nbsp; &nbsp;题:   &nbsp; &nbsp;</font><s:property value="#session.news.newstitle" />
     			<br>
     			<br>
-    			<font>类 &nbsp; &nbsp;  &nbsp; &nbsp;型:   &nbsp; &nbsp;</font>
-    			<select style="width: 150px" name="newstype">
-    				<option value="国际新闻">国际新闻</option>
-    				<option value="体育新闻">体育新闻</option>
-    				<option value="娱乐新闻">娱乐新闻</option>
-    			</select>	
+    			<font>类 &nbsp; &nbsp;  &nbsp; &nbsp;型:   &nbsp; &nbsp;</font><s:property value="#session.news.newstype" />
     			<br>
     			<br>
-    			<font>来  &nbsp; &nbsp; &nbsp; &nbsp;源:   &nbsp; &nbsp;</font><input type="text" name="newssource" style="width: 150px">
+    			<font>来  &nbsp; &nbsp; &nbsp; &nbsp;源:   &nbsp; &nbsp;</font><s:property value="#session.news.newssource" />
     			<br>
     			<br>
-    			<font>作  &nbsp; &nbsp; &nbsp; &nbsp;者:   &nbsp; &nbsp;</font><input type="text" name="newswriter" style="width: 150px">
+    			<font>作  &nbsp; &nbsp; &nbsp; &nbsp;者:   &nbsp; &nbsp;</font><s:property value="#session.news.newswriter" />
     			<br>
     			<br>
-    			<font>发  &nbsp;布  &nbsp;人:   &nbsp; &nbsp;</font><input type="text" name="newsissuer" style="width: 150px">
+    			<font>发  &nbsp;布  &nbsp;人:   &nbsp; &nbsp;</font><s:property value="#session.news.newsissuer" />
     			<br>
     			<br>
-    			<font>发布时间:&nbsp; &nbsp;&nbsp;</font><input class="Wdate" type="text" name="newsdate" id="date" style="width: 150px">
+    			<font>发布时间:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsdate" />
     			<br>
     			<br>
-    			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><input type="text" name="newskeys" style="width: 150px">	
+    			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><s:property value="#session.news.newskeys" />
     			<br>
     			<br>
-    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font><textarea name="newsbody" id="newsbody" style="width:150px;height:50px;"></textarea>
-    			<span id="nbody" style="color: red"></span>
-    			<br><br>
-    			<input type="submit" id="btn" value="预览">&nbsp;&nbsp;<input type="reset" value="重置">
+    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font><s:property value="#session.news.newsbody" />
+    			<br>
+    			<br>
+    			<font>点击次数:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsclick" />
+    			<br>
+    			<br>
+    			<font>审核状态:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsstate" />
+    			<br>
+    			<br>
+    			<font>删除状态:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsdeletestate" />
     		</form>
     	</div>
 

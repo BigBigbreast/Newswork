@@ -15,9 +15,14 @@
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
-		</action>	
+		</action>
+			
 		<action name="register" class="Action.RegisterAction" method="doregister">
 			<result name="success">/NewsBody.jsp</result>
+		</action>
+		
+		<action name="insertnews" class="Action.Newsaction" method="insertnews">
+			<result name="success">/Shownews.jsp</result>
 		</action>
 	</package>
 </struts>

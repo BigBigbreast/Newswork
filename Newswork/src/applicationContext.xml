@@ -87,6 +87,24 @@
 				<ref bean="userService"/>
 			</property>
 		</bean>
+		
+		<bean id="newsDao" class="Dao.NewsDaoimpl">
+			<property name="hibernateTemplate">
+				<ref bean="hibernateTempalte"></ref>
+			</property>
+		</bean>
+		
+		<bean id="newsService" class="Service.NewsServiceimpl">
+			<property name="newsDao">
+				<ref bean="newsDao"/>
+			</property>
+		</bean>
+		
+		<bean id="newsinsert" class="Action.Newsaction">
+			<property name="newsService">
+				<ref bean="newsService"/>
+			</property>
+		</bean>
 		<!--
 		<bean id="userDao" class="ssh.UserDaoimpl">
 			<property name="hibernateTemplate">
@@ -116,6 +134,7 @@
 			<tx:attributes>
 				<!-- <tx:method name="register"/> -->
 				<tx:method name="register*"/>
+				<tx:method name="insert*"/>
 				<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true"/> -->
 			</tx:attributes>
 		</tx:advice>

@@ -30,12 +30,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a style="padding-left: 120px" href="index.jsp">首页</a><a style="padding-left: 10px" href="login.jsp">登录</a>
     <hr>
     <div style="height:500px;padding-left: 100px">
-    	<div style="width:200px;height:400px;border:1px solid #000;float: left" >
+    	<div style="width:200px;height:450px;border:1px solid #000;float: left" >
 					<br>
 					<li><a href="CreateNews.jsp">创建新闻</a>
 					<br>
 					</div>
-    	<div style="width:500px;height:400px;border:1px solid #000;float: left;padding-left:100px ">    
+    	<div style="width:500px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    
     	<h3 >您好， <%=request.getParameter("username") %>！欢迎进入新闻系统</h3>
     	</div>
 
