@@ -23,6 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h1>Welcome you! <%=request.getParameter("username") %></h1>
+    <h2 >Welcome you! <%=request.getParameter("username") %></h2>
+  	<div>
+  	<div align="center"><img src="image/news.jpg"></div>
+    </div>
   </body>
 </html>

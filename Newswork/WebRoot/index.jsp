@@ -61,11 +61,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						var user=$.parseJSON(result);
 						if(user==null){
 							alert("Incorrect user name and password input");
-							url=url = "index.jsp";
+							url = "index.jsp";
 							window.location.href=url;			
 						}else{
 							alert("Login successfully");
-							url=url = "NewsBody.jsp?username="+user.username;
+							url = "NewsBody.jsp?username="+user.username;
 							window.location.href=url;
 						}
 					}

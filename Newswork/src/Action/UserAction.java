@@ -40,6 +40,7 @@ public class UserAction {
 		User user=userService.checklogin(name, pass);
 		Gson gson=new Gson();
 		result=gson.toJson(user);
+		System.out.println(result);
 		return "success";		
 	}
 
