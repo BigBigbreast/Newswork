@@ -130,6 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				Please input you password again:&nbsp;<input type="password" id="password2"/><span id="upass2" style="color: red;padding-right: 5px"></span>
     				<br>
     				</div>
+    				
     				<div style="padding-left: 100px;padding-top: 20px">
     				<input type="submit" id="btn" value="Commit"><br>
     				</div>
