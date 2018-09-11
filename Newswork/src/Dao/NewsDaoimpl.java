@@ -53,4 +53,11 @@ public class NewsDaoimpl implements NewsDao{
 				          });
 		return lists;
 	}
+
+	@Override
+	public News getnewsbyid(int id) {
+		News news=(News)hibernateTemplate.get(News.class, id);
+		
+		return news;
+	}
 }

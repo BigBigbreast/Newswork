@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript">
 	
@@ -78,18 +78,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
   </head>
   
-  <body>
-    	<div align="center" style="width: 100%;height: 100%;">
-    		<div align="center" style="padding-top: 100px">
-    			<h1>Welcome to News management System!</h1>
+  <body
+  style="width: 960px;
+    font-size: 14px;
+    font-family: 宋体;
+    margin: 3px auto;
+    background-repeat: repeat;
+    background-position: left top;
+    display: block;>
+  	<div align="center" ><img src="image/zzunews.png"></div>	
+  	<table border="0" cellspacing="0" cellpadding="0" width="960px" align="center">
+  	<tbody>
+    <tr>
+      <td height="36" background="image/menu_bg0.gif" tppabs="http://www.zgydhlw.cc/qn/images/menu_bg0.gif"><div id="lyzqcdh"> 
+      &nbsp;&nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/">网站首页</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/jigou/">机构概况</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/dongtai/">行业动态</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/jiaoliu/">对外交流</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/news/">新闻资讯</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/fagui/">政策法规</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/anquan/">安全中心</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/keyan/">科技研究</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/huodong/">活动中心</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/search/">证书查询</a>  
+      </div></td>
+    </tr>
+    </tbody>
+    </table>
+    <br>	
+    			<div align="center" style="padding-top: 100px">
+    			<h1 style="align:center">Welcome to News management System!</h1>
+    			</div>
+    			<div align="left" style="width: 100%;height: 100%;">
     			<form id="form" action="" style="padding-top: 50px" method="post">
-    				<font>Username:&nbsp;</font><input type="text" name="username" id="username"/><div ><span id="uname" style="color: red;padding-right: 5px;" ></span></div>
-    				<font >Password:&nbsp;</font><input type="password" name="userpass" id="password"/><div ><span id="upass" style="color: red;padding-right: 5px"></span></div>
+    				<div style="float:left;padding-left: 380px">
+    				Username:&nbsp;&nbsp;&nbsp; <input type="text" name="username" width="150px" id="username"/><span id="uname" style="color: red;padding-right: 5px;width: 150" ></span><br>
+    				Userpass:&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="userpass" width="150" id="password"/><span id="upass" style="color: red;padding-right: 5px;width:150;"></span><br>
     				<br>
+    				</div>
+    				<br><br><br><br>
+    				<div align="center">
     				<input type="submit" id="btn" value="Sign in"><br>
     				<a href="Register.jsp">Create an account</a>
+    				</div>
     			</form>
     		</div>
-    	</div>
   </body>
 </html>

@@ -8,4 +8,5 @@ public interface NewsDao {
 	public News insertNews(News news);
 	public int getallrows();
 	public List<News> getcurrentnews(int cuurentpage);
+	public News getnewsbyid(int id);
 }

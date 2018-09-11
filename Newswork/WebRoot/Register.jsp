@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'Register.jsp' starting page</title>
-    
+    <link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -43,7 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success:function(result){
 						if(result==null){
 							$("#uname").css("color","green").text("This user name is available");											
-							bool=true;
 						}else{
 							$("#uname").css("color","red").text("This user name is not available");
 						}
@@ -94,18 +93,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
   </head>
   
-  <body>
+  <body
+  style="width: 960px;
+    font-size: 14px;
+    font-family: 宋体;
+    margin: 3px auto;
+    background-repeat: repeat;
+    background-position: left top;
+    display: block;>
+  	<div align="center" ><img src="image/zzunews.png"></div>	
+  	<table border="0" cellspacing="0" cellpadding="0" width="960px" align="center">
+  	<tbody>
+    <tr>
+      <td height="36" background="image/menu_bg0.gif" tppabs="http://www.zgydhlw.cc/qn/images/menu_bg0.gif"><div id="lyzqcdh"> 
+      &nbsp;&nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/">网站首页</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/jigou/">机构概况</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/dongtai/">行业动态</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/jiaoliu/">对外交流</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/news/">新闻资讯</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/fagui/">政策法规</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/anquan/">安全中心</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/keyan/">科技研究</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/huodong/">活动中心</a> 
+      &nbsp;<a class="Channel2" href="" tppabs="http://www.zgydhlw.cc/search/">证书查询</a>  
+      </div></td>
+    </tr>
+    </tbody>
+    </table>
     <div align="center" style="width: 100%;height: 100%;">
-    		<div align="Left" style="padding-top: 100px;padding-left: 400px">
+    		<div align="Left" style="padding-top: 100px;padding-left: 320px">
     			<h1 >Create an account!Right now!</h1>
-    			<form id="form" action="register" style="padding-top: 30px" method="post">
+    			<form id="form" action="register" style="padding-top: 20px" method="post">
     				<div style="text-align: left">
-    				<font >Please input your username:&nbsp;&nbsp;</font><input type="text" name="username" id="username"/><div style="padding-left: 50px"><span id="uname" style="color: red;padding-right: 5px;" ></span></div>
-    				<font >Please input you password:&nbsp;&nbsp;&nbsp;&nbsp;</font><input type="password" name="userpass" id="password"/><div style="padding-left: 50px"><span id="upass" style="color: red;padding-right: 5px"></span></div>
-    				<font >Please input you password again:&nbsp;</font><input type="password" id="password2"/><div style="padding-left: 50px"><span id="upass2" style="color: red;padding-right: 5px"></span></div>
+    				Please input your username:&nbsp;&nbsp;<input type="text" name="username" id="username"/><span id="uname" style="color: red;padding-right: 5px;" ></span><br>
+    				Please input you password:&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="userpass" id="password"/><span id="upass" style="color: red;padding-right: 5px"></span><br>
+    				Please input you password again:&nbsp;<input type="password" id="password2"/><span id="upass2" style="color: red;padding-right: 5px"></span>
     				<br>
     				</div>
-    				<div style="padding-left: 100px">
+    				<div style="padding-left: 100px;padding-top: 20px">
     				<input type="submit" id="btn" value="Commit"><br>
     				</div>
     			</form>

@@ -38,5 +38,11 @@ public class NewsServiceimpl implements NewsService{
 	    pageBean.setTotalPage(totalPage);
 		return pageBean;
 	}
+
+	@Override
+	public News getnewsbyid(int id) {
+		// TODO Auto-generated method stub
+		return newsDao.getnewsbyid(id);
+	}
 	
 }
