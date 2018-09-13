@@ -182,8 +182,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
    	 <hr>
     <div>
-    <center>
-
+    
+    	<center>
 						<font size="4">当前<font color="red"><s:property
 									value="#request.pageBean.currentPage" /></font>页
 						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property

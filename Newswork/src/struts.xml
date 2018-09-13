@@ -6,30 +6,30 @@
 <struts>
 
 	<package name="c40" extends="json-default" namespace="/">
-		<action name="login" class="Action.UserAction" method="checklogin">
+		<action name="login" class="login" method="checklogin">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>	
-		<action name="checkname" class="Action.CheckNameaction" method="checkname">
+		<action name="checkname" class="checkname" method="checkname">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
 			
-		<action name="register" class="Action.RegisterAction" method="doregister">
+		<action name="register" class="register" method="doregister">
 			<result name="success">/NewsBody.jsp</result>
 		</action>
 		
-		<action name="insertnews" class="Action.Newsaction" method="insertnews">
+		<action name="insertnews" class="newsinsert" method="insertnews">
 			<result name="success">/Shownews.jsp</result>
 		</action>
 		
-		<action name="shownews" class="Action.Shownewsaction" method="shownews">
+		<action name="shownews" class="shownews" method="shownews">
 			<result name="success">/index.jsp</result>
 		</action>
 		
-		<action name="newsinfo" class="Action.Shownewsaction" method="newsinfo">
+		<action name="newsinfo" class="shownews" method="newsinfo">
 			<result name="success">/Newsinfo.jsp</result>
 		</action>
 	</package>
