@@ -72,11 +72,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
     <hr>
     <table border="0" cellspacing="0" cellpadding="0" width="200px" align="left">
-    	<tr><td height="36" background="image/title-bg1.gif" tppabs="http://www.zgydhlw.cc/qn/images/menu_bg0.gif"><div id="lyzqcdh">
+    	<tr>
+    	<td height="36" background="image/title-bg1.gif" tppabs="http://www.zgydhlw.cc/qn/images/menu_bg0.gif">
+    	<div id="lyzqcdh">
     	<a  class="Channel2"   tppabs="http://www.zgydhlw.cc/jigou/" href="index.jsp">首页</a>
-    	<a class="Channel2" tppabs="http://www.zgydhlw.cc/jigou/" href="login.jsp">登录</a></div><td>
-    	</tr>
+    	<a class="Channel2" tppabs="http://www.zgydhlw.cc/jigou/" href="login.jsp">登录</a>
+    	</div>
+    	</td>
+    	</tr>	
     </table>
+    	<input style="margin-left:500px;; margin-top:2px;height: 30px;width:200px;" placeholder="请输入关键词..." >
+    	<input style="float:right;margin-top:2px;height:30px;background-color:#D2B48C" type="button" value="搜索">
     <br><br><br>
     
     
@@ -184,8 +190,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>
     
     	<center>
-						<font size="4">当前<font color="red"><s:property
-									value="#request.pageBean.currentPage" /></font>页
+						<font size="4">当前<font color="red">
+						<s:property value="#request.pageBean.currentPage" /></font>页
 						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
 									value="#request.pageBean.totalPage" /></font>页
 						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
@@ -197,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </s:if>
 
 						<s:else>
-							<a href="shownews.action">首页</a>
+							<a href="shownews.action?page=1">首页</a>
             &nbsp;&nbsp;&nbsp;
             
 							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>

@@ -43,8 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success:function(result){
 						if(result==null){
 							$("#uname").css("color","green").text("This user name is available");											
+							bool=true;
 						}else{
 							$("#uname").css("color","red").text("This user name is not available");
+							bool=false;
 						}
 					}
 				})

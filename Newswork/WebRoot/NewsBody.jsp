@@ -59,33 +59,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</tr>
     </table>
     <br><br><br>
-    <table border="0" cellspacing="1" cellpadding="0" width="960px" >
+    
+    <table border="0" cellspacing="1" cellpadding="0" width="960px">
           <tbody>
           <tr>
-          <td valign="top" width="300">
+          <td valign="top" width="200">
           <table border="0" cellspacing="1" cellpadding="0" width="25%" bgcolor="#FCC8BC">
-          <tbody><tr>
-            <td class="title-bg2" height="26">
-              <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                <tbody><tr>
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >创建新闻</span></a></td>
-                </tr>
-              </tbody></table>
-            </td>
-          </tr>
+          <tbody>
           <tr>
             <td bgcolor="#abdce6"  width="200">
               <table border="0" cellspacing="0" cellpadding="4" width="200" height="400" >
-                <tbody><tr>
+                <tbody>
+                <tr>
                   <td>
                   <table width="200" cellpadding="0" cellspacing="0"><tbody>
-                  <tr></tr></tbody></table></td>
+          
+          <tr>
+            <td class="title-bg2" height="26">
+              <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tbody>
+                <tr>
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >创建新闻</span></a></td>
+                </tr>
+                </tbody>
+              	</table>
+              	<br>
+              	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tbody>
+                <tr >
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
+                </tr>
+                </tbody>
+              	</table>
+              	<br>
+                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tbody>
+                <tr >
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
+                </tr>
+                </tbody>
+              	</table>
+              	<br>
+              	<table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tbody>
+                <tr >
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
+                </tr>
+                </tbody>
+              	</table>
+              	<br>
+              
+            </td>
+          </tr>
+                   
+                  </tbody></table></td>
                 </tr>
               </tbody></table>
             </td>
             <td width="8">&#160;</td>
            		<td>
-           		<div style="width:500px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    
+           		<div style="width:650px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    
     			<h3 >您好， <%=request.getParameter("username") %>！欢迎进入新闻系统</h3>
     	</div>
            		</td>

@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		<td>
            		<div style="height:500px;">
     	
-    	<div style="width:500px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    
+    	<div style="width:500px;height:auto;float: left;padding-left:100px ">    
     		
     		<form action="insertnews" method="post">
     			<br>

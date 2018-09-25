@@ -46,7 +46,7 @@ public class NewsDaoimpl implements NewsDao{
 				             throws HibernateException, SQLException {
 				            Query query = session.createQuery("from News");
 				            query.setFirstResult(begin);
-				            query.setMaxResults(4);
+				            query.setMaxResults(12);
 				            List<News>lists = query.list();
 				            return lists;
 				           }

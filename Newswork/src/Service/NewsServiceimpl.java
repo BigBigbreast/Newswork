@@ -28,9 +28,9 @@ public class NewsServiceimpl implements NewsService{
 	public PageBean getcurrentnews(int currentpage) {
 		PageBean pageBean=new PageBean();
 		int allrows=newsDao.getallrows();
-		int totalPage=pageBean.getTotalPages(4, allrows);
+		int totalPage=pageBean.getTotalPages(12, allrows);
 		int page=pageBean.getCurPage(currentpage);
-		int offset=pageBean.getCurrentPageOffset(4, page);
+		int offset=pageBean.getCurrentPageOffset(12, page);
 		List<News> news=newsDao.getcurrentnews(offset);
 		pageBean.setList(news);
 		pageBean.setAllRows(allrows);
