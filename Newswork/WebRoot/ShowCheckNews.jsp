@@ -1,4 +1,6 @@
+<%@page import="Entity.News"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,39 +25,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script type="text/javascript" src="My97DatePicker/WdatePicker.js" ></script>
         <script type="text/javascript">
 			$(function(){
-				var bool=true; 
-				$('#date').click(WdatePicker);
-				var newstitle=$("#newstitle");
-				newstitle.blur(function(){
-				var texttitle=newstitle.val();
-				var title=$("#title");
-				if(texttitle==""){
-					title.text("标题不能为空");
-				}else{
-					bool=false;
-					title.text("");
-				}
+				var btn1=$("#btn1");
+				var btn2=$("#btn2");
+				btn2.click(function(){
+					
+					var newsid="<s:property value='#session.news.id'/>"
+					alert(newsid+"s");
+					window.document.location.href = "shownews.action?newsid="+newsid;
+				});
+				btn1.click(function(){
+					var newsid="<s:property value='#session.news.id'/>"
+					alert(newsid+"s");
+					window.document.location.href = "shownews.action";
 				});
 				
-				var newsbody=$("#newsbody");
-				newsbody.blur(function(){
-				var textbody=newsbody.val();
-				var nbody=$("#nbody");
-				if(textbody==""){
-					nbody.text("内容不能为空");
-				}else{
-					bool=false;
-					nbody.text("");
-				}
-				});
-				
-				$("#btn").click(function(){
-					if(newstitle.val()==""||newsbody.val()==""){
-						alert("请填写新闻的标题或内容")
-						return false;
-					}
-					return true;
-				})
 			})
         </script>
 <link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
@@ -155,42 +138,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	<div style="width:650px;height:auto;float: left;padding-left:100px ">    
     		
-    		<form action="insertnews" method="post">
+    		<form method="post">
     			<br>
-    			<font>编  &nbsp; &nbsp;  &nbsp; &nbsp;号:   &nbsp; &nbsp;</font><input type="text" name="newsid" style="width: 150px">
+    			<font>编  &nbsp; &nbsp;  &nbsp; &nbsp;号:   &nbsp; &nbsp;</font><s:property value="#session.news.newsid"/>
     			<br>
     			<br>
-    			<font>标 &nbsp; &nbsp;  &nbsp; &nbsp;题:   &nbsp; &nbsp;</font><input type="text" id="newstitle" name="newstitle" style="width: 150px">
+    			<font>标 &nbsp; &nbsp;  &nbsp; &nbsp;题:   &nbsp; &nbsp;</font><s:property value="#session.news.newstitle"/>
     			<span id="title" style="color: red"></span>	
     			<br>
     			<br>
     			<font>类 &nbsp; &nbsp;  &nbsp; &nbsp;型:   &nbsp; &nbsp;</font>
-    			<select style="width: 150px" name="newstype">
-    				<option value="国际新闻">国际新闻</option>
-    				<option value="体育新闻">体育新闻</option>
-    				<option value="娱乐新闻">娱乐新闻</option>
-    			</select>	
+    			<s:property value="#session.news.newstype"/>	
     			<br>
     			<br>
-    			<font>来  &nbsp; &nbsp; &nbsp; &nbsp;源:   &nbsp; &nbsp;</font><input type="text" name="newssource" style="width: 150px">
+    			<font>来  &nbsp; &nbsp; &nbsp; &nbsp;源:   &nbsp; &nbsp;</font><s:property value="#session.news.newssource"/>
     			<br>
     			<br>
-    			<font>作  &nbsp; &nbsp; &nbsp; &nbsp;者:   &nbsp; &nbsp;</font><input type="text" name="newswriter" style="width: 150px">
+    			<font>作  &nbsp; &nbsp; &nbsp; &nbsp;者:   &nbsp; &nbsp;</font><s:property value="#session.news.newswriter"/>
     			<br>
     			<br>
-    			<font>发  &nbsp;布  &nbsp;人:   &nbsp; &nbsp;</font><input type="text" name="newsissuer" style="width: 150px">
+    			<font>发  &nbsp;布  &nbsp;人:   &nbsp; &nbsp;</font><s:property value="#session.news.newsissuer"/>
     			<br>
     			<br>
-    			<font>发布时间:&nbsp; &nbsp;&nbsp;</font><input class="Wdate" type="text" name="newsdate" id="date" style="width: 150px">
+    			<font>发布时间:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsdate"/>
     			<br>
     			<br>
-    			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><input type="text" name="newskeys" style="width: 150px">	
+    			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><s:property value="#session.news.newskeys"/>
     			<br>
     			<br>
-    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font><textarea name="newsbody" id="newsbody" style="width:150px;height:50px;"></textarea>
-    			<span id="nbody" style="color: red"></span>
+    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font>
+    			<textarea name="newsbody" id="newsbody" style="width:350px;height:60px;">
+    				<s:property value="#session.news.newsbody"/>
+				</textarea>
+    			<br>
+    			<br>
+    			<font>点击次数:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsclick"/>
+    			<br>
+    			<br>
+    			<font>审核状态:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsstate"/>
+    			<br>
+    			<br>
+    			<font>删除状态:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsdeletestate"/>
     			<br><br>
-    			<input type="submit" id="btn" value="预览">&nbsp;&nbsp;<input type="reset" value="重置">
+    			<input type="button" id="btn1" value="通过">&nbsp;&nbsp;<input type="button" id="btn2" value="不通过">
     		</form>
     	</div>
 

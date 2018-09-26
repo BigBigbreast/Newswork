@@ -82,7 +82,7 @@ public class PageBean
      */
     public int getCurPage(int page)
     {
-        int currentPage = (page == 0)? 1: page;
+        int currentPage = (page == 0)?1: page;
         
         return currentPage;
     }

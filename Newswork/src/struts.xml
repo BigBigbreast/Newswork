@@ -32,5 +32,21 @@
 		<action name="newsinfo" class="shownews" method="newsinfo">
 			<result name="success">/Newsinfo.jsp</result>
 		</action>
+		
+		<action name="showneedchecknews" class="showneedchechnews"
+		method="showchecknews">
+			<result name="success">/CheckNews.jsp</result>
+		</action>
+		
+	
+		<action name="shouchecknewsinfo" class="showneedchechnews"
+		method="shouchecknewsinfo">
+			<result name="success">/ShowCheckNews.jsp</result>
+		</action>
+		
+		<action name="updatecheckstate" class="showneedchechnews"
+		method="updatecheckstate">
+			<result name="success">/CheckNews.jsp</result>
+		</action>
 	</package>
 </struts>

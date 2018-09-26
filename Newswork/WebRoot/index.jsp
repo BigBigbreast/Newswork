@@ -36,7 +36,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }           
             return true;
         }    
-			
+		$(function(){
+			var searchinput=$("#searchinput").val();
+			var searchbutton=$("#searchbutton");
+			searchbutton.click(function(){
+				if(searchinput==""){
+					alert("输入的关键字不能为空");
+				}else{
+					
+				}
+			})
+		
+		})	
 	</script>
   </head>
   
@@ -80,9 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	</td>
     	</tr>	
-    </table>
-    	<input style="margin-left:500px;; margin-top:2px;height: 30px;width:200px;" placeholder="请输入关键词..." >
-    	<input style="float:right;margin-top:2px;height:30px;background-color:#D2B48C" type="button" value="搜索">
+    	</table>
+    	<input id="searchinput" style="margin-left:500px;; margin-top:2px;height: 30px;width:200px;" placeholder="请输入关键词..." >
+    	<input id="searchbutton" style="float:right;margin-top:2px;height:30px;background-color:#D2B48C" type="button" value="搜索">
     <br><br><br>
     
     
@@ -188,7 +199,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
    	 <hr>
     <div>
-    
     	<center>
 						<font size="4">当前<font color="red">
 						<s:property value="#request.pageBean.currentPage" /></font>页

@@ -41,8 +41,27 @@ public class NewsServiceimpl implements NewsService{
 
 	@Override
 	public News getnewsbyid(int id) {
-		// TODO Auto-generated method stub
 		return newsDao.getnewsbyid(id);
+	}
+
+	@Override
+	public PageBean getcurrentchecknews(int currentpage) {
+		PageBean pageBean=new PageBean();
+		int allrows=newsDao.getallneedcheckrows();
+		int totalPage=pageBean.getTotalPages(8, allrows);
+		int page=pageBean.getCurPage(currentpage);
+		int offset=pageBean.getCurrentPageOffset(8, page);
+		List<News> news=newsDao.getcurrentchecknews(offset);
+		pageBean.setList(news);
+		pageBean.setAllRows(allrows);
+	    pageBean.setCurrentPage(currentpage);
+	    pageBean.setTotalPage(totalPage);
+		return pageBean;
+	}
+
+	@Override
+	public void updatecheckstate(News news) {
+		newsDao.updatecheckstate(news);
 	}
 	
 }

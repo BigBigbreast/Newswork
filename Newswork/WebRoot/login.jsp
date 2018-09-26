@@ -52,7 +52,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$.ajax({
 					type:"post",
 					url:"/Newswork/login.action",
-					async:true,
 					data:{
 						"username":name,
 						"userpass":pass
@@ -62,11 +61,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						if(user==null){
 							alert("Incorrect user name and password input");
 							url = "login.jsp";
-							window.location.href=url;			
+							window.open(url);		
 						}else{
 							alert("Login successfully");
 							url = "NewsBody.jsp?username="+user.username;
-							window.location.href=url;
+							window.open(url);
 						}
 					}
 				})

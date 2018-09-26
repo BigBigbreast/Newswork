@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		<td>
            		<div style="height:500px;">
     	
-    	<div style="width:500px;height:450px;border:1px solid #000;float: left;padding-left:100px ">    
+    	<div style="width:500px;height:450px;float: left;padding-left:100px ">    
     		
     		<form action="insertnews" method="post">
     			<br>
@@ -155,7 +155,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><s:property value="#session.news.newskeys"/>
     			<br>
     			<br>
-    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font><s:property value="#session.news.newsbody"/>
+    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font>
+    			<textarea name="newsbody" id="newsbody" style="width:350px;height:60px;">
+    				<s:property value="#session.news.newsbody"/>
+				</textarea>
     			<br>
     			<br>
     			<font>点击次数:&nbsp; &nbsp;&nbsp;</font><s:property value="#session.news.newsclick"/>

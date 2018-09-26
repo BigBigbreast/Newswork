@@ -112,6 +112,13 @@
 				<ref bean="newsService"/>
 			</property>
 		</bean>
+		
+		<bean id="showneedchechnews" class="Action.CheckNewsAction">
+			<property name="newsService">
+				<ref bean="newsService"/>
+			</property>
+		</bean>
+		
 		<!--
 		<bean id="userDao" class="ssh.UserDaoimpl">
 			<property name="hibernateTemplate">
@@ -142,6 +149,7 @@
 				<!-- <tx:method name="register"/> -->
 				<tx:method name="register*"/>
 				<tx:method name="insert*"/>
+				<tx:method name="update*"/>
 				<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true"/> -->
 			</tx:attributes>
 		</tx:advice>
