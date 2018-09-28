@@ -62,7 +62,7 @@ public class NewsDaoimpl implements NewsDao{
 
 	@Override
 	public int getallneedcheckrows() {
-		ArrayList<News> lists=(ArrayList<News>) hibernateTemplate.find("from News as n where n.newsstate='未审核'");
+		ArrayList<News> lists=(ArrayList<News>) hibernateTemplate.find("from News as n where n.newsstate='未审核' or n.newsstate='不通过'");
 		
 		return lists.size();
 	}
@@ -74,7 +74,7 @@ public class NewsDaoimpl implements NewsDao{
 				new  HibernateCallback() {
 				           public Object doInHibernate(Session session)
 				             throws HibernateException, SQLException {
-				            Query query = session.createQuery("from News n where n.newsstate='未审核'");
+				            Query query = session.createQuery("from News n where n.newsstate='未审核' or n.newsstate='不通过'");
 				            query.setFirstResult(begin);
 				            query.setMaxResults(8);
 				            List<News>lists = query.list();
@@ -89,6 +89,36 @@ public class NewsDaoimpl implements NewsDao{
 		News n=news;
 		n.setNewsstate("已审核");
 		hibernateTemplate.update(n);
+	}
+
+	@Override
+	public void updatecheckstate2(News news) {
+		News n=news;
+		n.setNewsstate("未通过");
+		hibernateTemplate.update(n);
+	}
+
+	@Override
+	public int getalleditnews() {
+		ArrayList<News> lists=(ArrayList<News>) hibernateTemplate.find("from News");
+		return lists.size();
+	}
+
+	@Override
+	public List<News> getcurrenteditnews(int currentpage) {
+		final int begin=currentpage;
+		List<News> lists=getHibernateTemplate().executeFind(
+				new  HibernateCallback() {
+				           public Object doInHibernate(Session session)
+				             throws HibernateException, SQLException {
+				            Query query = session.createQuery("from News");
+				            query.setFirstResult(begin);
+				            query.setMaxResults(8);
+				            List<News>lists = query.list();
+				            return lists;
+				           }
+				          });
+		return lists;
 	}
 	
 	

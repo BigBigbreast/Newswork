@@ -54,7 +54,7 @@ public class NewsServiceimpl implements NewsService{
 		List<News> news=newsDao.getcurrentchecknews(offset);
 		pageBean.setList(news);
 		pageBean.setAllRows(allrows);
-	    pageBean.setCurrentPage(currentpage);
+	    pageBean.setCurrentPage(page);
 	    pageBean.setTotalPage(totalPage);
 		return pageBean;
 	}
@@ -62,6 +62,26 @@ public class NewsServiceimpl implements NewsService{
 	@Override
 	public void updatecheckstate(News news) {
 		newsDao.updatecheckstate(news);
+	}
+
+	@Override
+	public void updatecheckstate2(News news) {
+		newsDao.updatecheckstate2(news);
+	}
+
+	@Override
+	public PageBean getcurrenteditnews(int currentpage) {
+		PageBean pageBean=new PageBean();
+		int allrows=newsDao.getalleditnews();
+		int totalPage=pageBean.getTotalPages(8, allrows);
+		int page=pageBean.getCurPage(currentpage);
+		int offset=pageBean.getCurrentPageOffset(8, page);
+		List<News> news=newsDao.getcurrenteditnews(offset);
+		pageBean.setList(news);
+		pageBean.setAllRows(allrows);
+	    pageBean.setCurrentPage(page);
+	    pageBean.setTotalPage(totalPage);
+		return pageBean;
 	}
 	
 }

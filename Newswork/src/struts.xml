@@ -46,7 +46,18 @@
 		
 		<action name="updatecheckstate" class="showneedchechnews"
 		method="updatecheckstate">
-			<result name="success">/CheckNews.jsp</result>
+			<result type="chain">showneedchecknews</result>
 		</action>
+		
+		<action name="updatecheckstate2" class="showneedchechnews"
+		method="updatecheckstate2">
+			<result type="chain">showneedchecknews</result>
+		</action>
+		
+		<action name="showneededitnews" class="showneededitnews"
+		method="showdeitnews">
+			<result name="success">/EditNews.jsp</result>
+		</action>
+		
 	</package>
 </struts>

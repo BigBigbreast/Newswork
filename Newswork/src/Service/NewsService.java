@@ -13,4 +13,9 @@ public interface NewsService {
 	
 	//处理审核事件
 	public void updatecheckstate(News news);
+	//处理审核事件
+	public void updatecheckstate2(News news);
+	
+	//获取当前的待编辑的那一页数据
+	public PageBean getcurrenteditnews(int currentpage);
 }

@@ -30,13 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				btn2.click(function(){
 					
 					var newsid="<s:property value='#session.news.id'/>"
-					alert(newsid+"s");
-					window.document.location.href = "shownews.action?newsid="+newsid;
+					window.document.location.href = "updatecheckstate.action?newsid="+newsid;
 				});
 				btn1.click(function(){
 					var newsid="<s:property value='#session.news.id'/>"
-					alert(newsid+"s");
-					window.document.location.href = "shownews.action";
+					window.document.location.href = "updatecheckstate.action";
 				});
 				
 			})

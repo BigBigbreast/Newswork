@@ -17,5 +17,13 @@ public interface NewsDao {
 	
 	//处理审核事件
 	public void updatecheckstate(News news);
+	//处理审核事件2
+	public void updatecheckstate2(News news);
+	
+	//获取编辑的新闻的数量
+	public int getalleditnews();
+	//获取待编辑的当前新闻的数据
+	public List<News> getcurrenteditnews(int currentpage);
+	
 	
 }

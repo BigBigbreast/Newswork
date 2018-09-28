@@ -55,9 +55,7 @@ public class CheckNewsAction {
 	public String showchecknews(){
 		PageBean pageBean=newsService.getcurrentchecknews(this.page);
 		List<News> news=pageBean.getList();
-		if (news.size()>0&&pageBean.getCurrentPage()==0) {
-			pageBean.setCurrentPage(1);
-		}
+		
 		ValueStack vStack=ActionContext.getContext().getValueStack();
 		vStack.setValue("#session.needchecknews", news);
 		HttpServletRequest request = ServletActionContext.getRequest();        
@@ -66,7 +64,14 @@ public class CheckNewsAction {
 	}
 	
 	public String updatecheckstate(){
+		News news=newsService.getnewsbyid(newsid);
 		newsService.updatecheckstate(news);
+		return "success";
+	}
+	
+	public String updatecheckstate2(){
+		News news=newsService.getnewsbyid(newsid);
+		newsService.updatecheckstate2(news);
 		return "success";
 	}
 	

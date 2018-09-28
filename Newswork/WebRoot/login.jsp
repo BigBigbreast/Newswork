@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</div>
     				<br><br><br><br>
     				<div align="center">
-    				<input type="submit" id="btn" value="Sign in"><br>
+    				<input type="button" id="btn" value="Sign in"><br>
     				<a href="Register.jsp">Create an account</a>
     				</div>
     			</form>
