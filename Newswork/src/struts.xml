@@ -6,11 +6,13 @@
 <struts>
 
 	<package name="c40" extends="json-default" namespace="/">
+		
 		<action name="login" class="login" method="checklogin">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
-		</action>	
+		</action>
+		
 		<action name="checkname" class="checkname" method="checkname">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -20,11 +22,6 @@
 		<action name="register" class="register" method="doregister">
 			<result name="success">/NewsBody.jsp</result>
 		</action>
-		
-		<action name="insertnews" class="newsinsert" method="insertnews">
-			<result name="success">/Shownews.jsp</result>
-		</action>
-		
 		<action name="shownews" class="shownews" method="shownews">
 			<result name="success">/index.jsp</result>
 		</action>
@@ -32,6 +29,31 @@
 		<action name="newsinfo" class="shownews" method="newsinfo">
 			<result name="success">/Newsinfo.jsp</result>
 		</action>
+		
+		<action name="selectnews" class="showneededitnews"
+		method="selectnews">
+			<result name="success">/SelectNews.jsp</result>
+		</action>
+	</package>
+	
+	<package name="c41" extends="json-default" namespace="/">
+		<interceptors>
+			<interceptor name="myInterceptor" class="Interceptor.RootInteceptor"></interceptor>			
+			<interceptor-stack name="myStack">
+                    <interceptor-ref name="myInterceptor"></interceptor-ref>
+                    <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+		</interceptors>	
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<global-results>
+                <result name="fail">/login.jsp</result>
+        </global-results>
+        
+		<action name="insertnews" class="newsinsert" method="insertnews">
+			<result name="success">/Shownews.jsp</result>
+		</action>
+		
+		
 		
 		<action name="showneedchecknews" class="showneedchechnews"
 		method="showchecknews">
@@ -58,6 +80,36 @@
 		method="showdeitnews">
 			<result name="success">/EditNews.jsp</result>
 		</action>
+		
+		<action name="showeditnewsinfo" class="showneededitnews"
+		method="showeditnewsinfo"
+		>
+			<result name="success">/ShowEditNewsInfo.jsp</result>	
+		</action>
+		
+		<action name="updateeditnewsinfo" class="showneededitnews"
+		method="updateeditnewsinfo"
+		>
+			<result type="chain">showneededitnews</result>
+		</action>
+		
+		<action name="showneeddeletenews" class="showneededitnews"
+		method="showdeitnews">
+			<result name="success">/DeleteNews.jsp</result>
+		</action>
+		
+		<action name="shoudeletenewsinfo" class="showneedchechnews"
+		method="shouchecknewsinfo">
+			<result name="success">/ShowDeleteNewsinfo.jsp</result>
+		</action>
+		
+		<action name="deletenews" class="showneededitnews"
+		method="deletenewsinfo">
+			<result name="success" type="chain">showneeddeletenews</result>
+		</action>
+		
+		
+		
 		
 	</package>
 </struts>

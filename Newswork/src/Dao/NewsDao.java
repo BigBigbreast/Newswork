@@ -25,5 +25,14 @@ public interface NewsDao {
 	//获取待编辑的当前新闻的数据
 	public List<News> getcurrenteditnews(int currentpage);
 	
+	//更新新闻信息
+	public void updateeditnewsinfo(News news);
+	//删除新闻
+	public void deletenews(int id);
+	//模糊查询
+	public List<News> selectnews(int begin,String key);
+	//获取模糊查询的数量
+	public int selectnewsnum(String key);
+	
 	
 }

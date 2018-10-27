@@ -120,6 +120,48 @@ public class NewsDaoimpl implements NewsDao{
 				          });
 		return lists;
 	}
+
+	@Override
+	public void updateeditnewsinfo(News news) {
+		hibernateTemplate.update(news);
+	}
+
+	@Override
+	public void deletenews(int id) {
+		News news=this.getnewsbyid(id);		
+		hibernateTemplate.delete(news);
+	}
+
+	@Override
+	public List<News> selectnews(final int begin,final String key) {
+		List<News> lists=getHibernateTemplate().executeFind(
+				new  HibernateCallback() {
+				           public Object doInHibernate(Session session)
+				             throws HibernateException, SQLException {
+				        	Query query=session.createQuery("from News as n where n.newstitle like '%"+key+"%'");
+				       		
+				            query.setFirstResult(begin);
+				            query.setMaxResults(12);
+				            List<News>lists = query.list();
+				            return lists;
+				           }
+				          });
+		return lists;
+	}
+
+	@Override
+	public int selectnewsnum(final String key) {
+		List<News> lists=getHibernateTemplate().executeFind(
+				new  HibernateCallback() {
+				           public Object doInHibernate(Session session)
+				             throws HibernateException, SQLException {
+				        	 Query query=session.createQuery("from News as n where n.newstitle like '%"+key+"%'");
+				            List<News>lists = query.list();
+				            return lists;
+				           }
+				          });
+		return lists.size();
+	}
 	
 	
 }

@@ -83,5 +83,31 @@ public class NewsServiceimpl implements NewsService{
 	    pageBean.setTotalPage(totalPage);
 		return pageBean;
 	}
+
+	@Override
+	public void updateeditnewsinfo(News news) {
+		newsDao.updateeditnewsinfo(news);
+	}
+
+	@Override
+	public void deletenews(int id) {
+		newsDao.deletenews(id);
+	}
+
+	@Override
+	public PageBean getselectNews(int currentpage, String key) {
+		PageBean pageBean=new PageBean();
+		int allrows=newsDao.selectnewsnum(key);
+		int totalPage=pageBean.getTotalPages(12, allrows);
+		int page=pageBean.getCurPage(currentpage);
+		int offset=pageBean.getCurrentPageOffset(12, page);
+		List<News> news=newsDao.selectnews(offset, key);
+		pageBean.setList(news);
+		pageBean.setAllRows(allrows);
+	    pageBean.setCurrentPage(page);
+	    pageBean.setTotalPage(totalPage);
+		return pageBean;
+	}
+
 	
 }

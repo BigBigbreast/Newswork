@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'CheckNews.jsp' starting page</title>
+    <title>My JSP 'NewsBody.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,29 +20,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<script type="application/javascript" src="../js/bootstrap.min.js"></script>
-	<script src="../js/ie-emulation-modes-warning.js"></script>
-	<script src="../js/ie10-viewport-bug-workaround.js"></script>
-	<link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
-  	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-	<script type="text/javascript">
-		 function validate()
-        {
-            var page = document.getElementsByName("page")[0].value;
-                
-            if(page > "<s:property value='%{#request.pageBean.totalPage}'/>")
-            {
-                alert("你输入的页数大于最大页数，页面将跳转到首页！");
-                
-                window.document.location.href = "showneededitnews.action";                
-                return false;
-            }           
-            return true;
-        }    
-	</script>
+	<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+        <script type="text/javascript" src="My97DatePicker/WdatePicker.js" ></script>
+        <script type="text/javascript">
+			$(function(){
+				var newstype="<s:property value='#session.editnewsinfo.newstype'/>";
+				if(newstype=="国际新闻"){
+					$("#option1").attr("selected","selected");
+				}else if(newstype="娱乐新闻"){
+					$("#option2").attr("selected","selected");
+				}else{
+					$("#option3").attr("selected","selected");
+				}
+				var bool=true; 
+				$('#date').click(WdatePicker);
+				var newstitle=$("#newstitle");
+				newstitle.blur(function(){
+				var texttitle=newstitle.val();
+				var title=$("#title");
+				if(texttitle==""){
+					title.text("标题不能为空");
+				}else{
+					bool=false;
+					title.text("");
+				}
+				});
+				
+				var newsbody=$("#newsbody");
+				newsbody.blur(function(){
+				var textbody=newsbody.val();
+				var nbody=$("#nbody");
+				if(textbody==""){
+					nbody.text("内容不能为空");
+				}else{
+					bool=false;
+					nbody.text("");
+				}
+				});
+				
+				$("#btn").click(function(){
+					if(newstitle.val()==""||newsbody.val()==""){
+						alert("请填写新闻的标题或内容")
+						return false;
+					}
+					return true;
+				})
+			})
+        </script>
+<link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
   </head>
   
-   <body
+  <body
   style="width: 960px;
     font-size: 14px;
     font-family: 宋体;
@@ -77,22 +105,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</tr>
     </table>
     <br><br><br>
-    
-    <table border="0" cellspacing="1" cellpadding="0" width="960px">
+    <table border="0" cellspacing="1" cellpadding="0" width="960px" >
           <tbody>
           <tr>
-          <td valign="top" width="200">
+          <td valign="top" width="300">
           <table border="0" cellspacing="1" cellpadding="0" width="25%" bgcolor="#FCC8BC">
           <tbody>
           <tr>
             <td bgcolor="#abdce6"  width="200">
               <table border="0" cellspacing="0" cellpadding="4" width="200" height="400" >
-                <tbody>
-                <tr>
+                <tbody><tr>
                   <td>
                   <table width="200" cellpadding="0" cellspacing="0"><tbody>
-          
-          <tr>
+                  <tr>
             <td class="title-bg2" height="26">
               <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
@@ -105,7 +130,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                
                   <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="showneedchecknews.action"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
                 </tr>
                 </tbody>
@@ -122,59 +146,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="DeleteNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
                 </tr>
                 </tbody>
               	</table>
               	<br>
             </td>
           </tr>
-                   
                   </tbody></table></td>
                 </tr>
               </tbody></table>
             </td>
             <td width="8">&#160;</td>
            		<td>
-           		<div style="width:700px;height:450px;border:1px solid #000;float: left;padding-left: 50px ">    
-    			<h2 class="sub-header">编辑新闻</h2>
-    			<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>编号：</th>
-								<th>标题：</th>
-								<th>类型：</th>
-								<th>来源：</th>
-								<th>发布人：</th>
-								<th>审核状态：</th>
-								<th>操作：</th>
-							</tr>
-							<s:iterator value="#session.neededitnews" var="news">
-								<tr>
-									<td><br><s:property value="#news.newsid" /></td>
-									<td width="50px">
-									<br>
-									<div style="width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-									<s:property value="#news.newstitle" />
-									</div>
-									</td>
-									<td><br><s:property value="#news.newstype" /></td>
-									<td><br><s:property value="#news.newssource" /></td>
-									<td><br><s:property value="#news.newsissuer" /></td>
-									<td><br><s:property value="#news.newsstate" /></td>
-									<td>
-									<br><a
-										href="showeditnewsinfo.action?id=<s:property value="#news.id"/>">编辑</a></td>
-									<td>
-									<br><a
-										href="newsinfo.action?newsid=<s:property value="#news.id"/>">查看</a></td>
-								</tr>
-							</s:iterator>
-						</thead>
-					</table>
-				</div>
-    			</div>
+           		<div style="height:500px;">
+    	
+    	<div style="width:650px;height:auto;float: left;padding-left:100px ">    
+    		
+    		<form action="updateeditnewsinfo" method="post">
+    			<br>
+    			<font>编  &nbsp; &nbsp;  &nbsp; &nbsp;号:   &nbsp; &nbsp;</font><input type="text" name="newsid" style="width: 150px" value='<s:property value="#session.editnewsinfo.newsid"/>'>
+    			<br>
+    			<br>
+    			<font>标 &nbsp; &nbsp;  &nbsp; &nbsp;题:   &nbsp; &nbsp;</font><input type="text" id="newstitle" name="newstitle" style="width: 150px" value='<s:property value="#session.editnewsinfo.newsid"/>'>
+    			<span id="title" style="color: red"></span>	
+    			<br>
+    			<br>
+    			<font>类 &nbsp; &nbsp;  &nbsp; &nbsp;型:   &nbsp; &nbsp;</font>
+    			<select style="width: 150px" name="newstype">
+    				<option value="国际新闻" id="option1">国际新闻</option>
+    				<option value="体育新闻" id="option2">体育新闻</option>
+    				<option value="娱乐新闻" id="option3">娱乐新闻</option>
+    			</select>	
+    			<br>
+    			<br>
+    			<font>来  &nbsp; &nbsp; &nbsp; &nbsp;源:   &nbsp; &nbsp;</font><input type="text" name="newssource" style="width: 150px" value='<s:property value="#session.editnewsinfo.newssource"/>'>
+    			<br>
+    			<br>
+    			<font>作  &nbsp; &nbsp; &nbsp; &nbsp;者:   &nbsp; &nbsp;</font><input type="text" name="newswriter" style="width: 150px" value='<s:property value="#session.editnewsinfo.newswriter"/>'>
+    			<br>
+    			<br>
+    			<font>发  &nbsp;布  &nbsp;人:   &nbsp; &nbsp;</font><input type="text" name="newsissuer" style="width: 150px" value='<s:property value="#session.editnewsinfo.newsissuer"/>'>
+    			<br>
+    			<br>
+    			<font>发布时间:&nbsp; &nbsp;&nbsp;</font><input class="Wdate" type="text" name="newsdate" id="date" style="width: 150px" value='<s:property value="#session.editnewsinfo.newsdate"/>'>
+    			<br>
+    			<br>
+    			<font>关  &nbsp; 键 &nbsp;字:   &nbsp;  </font><input type="text" name="newskeys" style="width: 150px" value='<s:property value="#session.editnewsinfo.newskeys"/>'>	
+    			<br>
+    			<br>
+    			<font>内 &nbsp; &nbsp;  &nbsp; &nbsp;容:   &nbsp; &nbsp;</font><textarea name="newsbody" id="newsbody" style="width:350px;height:100px;">
+					<s:property value="#session.editnewsinfo.newsbody"/>
+    			</textarea>
+    			<span id="nbody" style="color: red"></span>
+    			<br><br>
+    			<input type="submit" id="btn" value="提交">&nbsp;&nbsp;<input type="reset" value="重置">
+    		</form>
+    	</div>
+
+    </div>
            		</td>
           </tbody>
           </table>
@@ -182,47 +212,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </table>
 
     <hr>
-    <div>
-    	<center>
-						<font size="4">当前<font color="red">
-						<s:property value="#request.pageBean.currentPage" /></font>页
-						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
-									value="#request.pageBean.totalPage" /></font>页
-						</font>&nbsp;&nbsp; <font size="4">共<font color="red"><s:property
-									value="#request.pageBean.allRows" /></font>条记录
-						</font><br> <br>
-
-						<s:if test="#request.pageBean.currentPage == 0||#request.pageBean.currentPage == 1">
-            首页&nbsp;&nbsp;&nbsp;上一页
-        </s:if>
-
-						<s:else>
-							<a href="showneededitnews.action?page=1">首页</a>
-            &nbsp;&nbsp;&nbsp;
-            
-							<a	href="showneededitnews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
-						</s:else>
-
-						<s:if
-							test="#request.pageBean.currentPage != #request.pageBean.totalPage">
-							
-							<a	href="showneededitnews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
-            &nbsp;&nbsp;&nbsp;
-            
-							<a	href="showneededitnews.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
-						</s:if>
-						<s:else>
-            下一页&nbsp;&nbsp;&nbsp;尾页
-        </s:else>
-					</center>
-					<br>
-					<center>
-						<form action="showneededitnews" onsubmit="return validate();">
-							<font size="4">跳转至</font> <input type="text" size="2" name="page">页
-							<input type="submit" value="跳转">
-						</form>
-					</center>
     <div align="center">Copyright 2018 郑州大学大三实训 版权所有 </div>
-    </div>
   </body>
 </html>

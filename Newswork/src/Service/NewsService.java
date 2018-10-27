@@ -1,5 +1,7 @@
 package Service;
 
+import java.util.List;
+
 import Entity.News;
 import Util.PageBean;
 
@@ -18,4 +20,13 @@ public interface NewsService {
 	
 	//获取当前的待编辑的那一页数据
 	public PageBean getcurrenteditnews(int currentpage);
+	
+	//更新新闻信息
+	public void updateeditnewsinfo(News news);
+	
+	//删除新闻
+	public void deletenews(int id);
+	
+	//模糊查询
+	public PageBean getselectNews(int currentpage,String key);
 }

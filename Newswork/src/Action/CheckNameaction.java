@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.util.ValueStack;
+
 import Service.UserService;
 
 public class CheckNameaction {
@@ -35,7 +38,7 @@ public class CheckNameaction {
         String username=request.getParameter("username");
         System.out.println(username);
         result=userService.checkname(username);
+        
 		return "success";
-		
 	}
 }

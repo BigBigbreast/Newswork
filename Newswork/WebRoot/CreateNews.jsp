@@ -120,9 +120,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<br>
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
-                <tr >
-                
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CheckNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
+                 <tr >
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="showneedchecknews.action"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
                 </tr>
                 </tbody>
               	</table>
@@ -130,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="EditNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >编辑新闻</span></a></td>
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="showneededitnews.action"><span class="qingchunzhongxueA_tabletitle2" >编辑新闻</span></a></td>
                 </tr>
                 </tbody>
               	</table>
@@ -138,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="DeleteNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
                 </tr>
                 </tbody>
               	</table>

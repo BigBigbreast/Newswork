@@ -87,7 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                
                   <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="showneedchecknews.action"><span class="qingchunzhongxueA_tabletitle2" >审核新闻</span></a></td>
                 </tr>
                 </tbody>
@@ -104,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	<table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tbody>
                 <tr >
-                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="CreateNews.jsp"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
+                  <td width="30%" height="25px" background="image/lmbjcenter.jpg"><a href="showneeddeletenews"><span class="qingchunzhongxueA_tabletitle2" >删除新闻</span></a></td>
                 </tr>
                 </tbody>
               	</table>

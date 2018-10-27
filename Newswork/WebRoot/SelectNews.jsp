@@ -19,10 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="css/DefaultSkin.css" tppabs="http://www.zgydhlw.cc/qn/images/DefaultSkin.css" rel="stylesheet" type="text/css"> 
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 	<script type="text/javascript">
-			var exp='<%=(String)request.getAttribute("boolean")%>';
-			if(exp!="false"){
-				window.document.location.href = "shownews.action";
-			}
 		function validate()
         {
             var page = document.getElementsByName("page")[0].value;
@@ -31,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             {
                 alert("你输入的页数大于最大页数，页面将跳转到首页！");
                 
-                window.document.location.href = "shownews.action";                
+                window.document.location.href = "selectnews.action";                
                 return false;
             }           
             return true;
@@ -93,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</td>
     	</tr>	
     	</table>
-    	<input id="searchinput" type="text" style="margin-left:500px;; margin-top:2px;height: 30px;width:200px;" placeholder="请输入关键词..." >
+    	<input id="searchinput" style="margin-left:500px;; margin-top:2px;height: 30px;width:200px;" placeholder="请输入关键词..." >
     	<input id="searchbutton" style="float:right;margin-top:2px;height:30px;background-color:#D2B48C" type="button" value="搜索">
     <br><br><br>
     
@@ -120,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tbody><tr>
                   <td>
                   <table width="100%" cellpadding="0" cellspacing="0"><tbody>
-                  	<s:iterator value="#session.news1" var="book">
+                  	<s:iterator value="#session.selectnews1" var="book">
 					<tr><td width="10" valign="top" class="bbb"><img src="image/Article_common.gif" tppabs="http://www.zgydhlw.cc/qn/images/Article_common.gif"></td><td class="bbb"><a class="aaa" href="newsinfo.action?newsid=<s:property value="#book.id"/>"/><s:property value="#book.newstitle" /></a></td></tr>
 					</s:iterator>
                   <tr></tr></tbody></table></td>
@@ -150,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tbody><tr>
                   <td>
                   <table width="100%" cellpadding="0" cellspacing="0"><tbody>
-                  	<s:iterator value="#session.news2" id="book">
+                  	<s:iterator value="#session.selectnews2" id="book">
 				   	  <tr><td width="10" valign="top" class="bbb"><img src="image/Article_common.gif"
 				   	   tppabs="http://www.zgydhlw.cc/qn/images/Article_common.gif"></td><td class="bbb"><a class="aaa" href="newsinfo.action?newsid=<s:property value="#book.id"/>" tppabs="http://www.zgydhlw.cc/dongtai/zhoubian/129.html" target="_self">
 				   	    <s:property value="#book.newstitle" /></a></td></tr>
@@ -182,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tbody><tr>
                   <td>
                   <table width="100%" cellpadding="0" cellspacing="0"><tbody>
-                  	<s:iterator value="#session.news3" var="book">
+                  	<s:iterator value="#session.selectnews3" var="book">
 				    <tr><td width="10" valign="top" class="bbb"><img src="image/Article_common.gif" tppabs="http://www.zgydhlw.cc/qn/images/Article_common.gif"></td><td class="bbb"><a class="aaa" href="newsinfo.action?newsid=<s:property value="#book.id"/>" tppabs="http://www.zgydhlw.cc/dongtai/zhoubian/129.html" target="_self">
 				    <s:property value="#book.newstitle" /></a></td></tr>
 					</s:iterator>
@@ -214,19 +210,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </s:if>
 
 						<s:else>
-							<a href="shownews.action?page=1">首页</a>
+							<a href="shownews.action?page=1&key=<s:property value="#session.selectkey"/>">首页</a>
             &nbsp;&nbsp;&nbsp;
             
-							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>&key=<s:property value="#session.selectkey"/>">上一页</a>
 						</s:else>
 
 						<s:if
 							test="#request.pageBean.currentPage != #request.pageBean.totalPage">
 							
-							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>&key=<s:property value="#session.selectkey"/>">下一页</a>
             &nbsp;&nbsp;&nbsp;
             
-							<a	href="shownews.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
+							<a	href="shownews.action?page=<s:property value="#request.pageBean.totalPage"/>&key=<s:property value="#session.selectkey"/>">尾页</a>
 						</s:if>
 						<s:else>
             下一页&nbsp;&nbsp;&nbsp;尾页
@@ -234,7 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</center>
 					<br>
 					<center>
-						<form action="shownews" onsubmit="return validate();">
+						<form action="selectnews" onsubmit="return validate();">
 							<font size="4">跳转至</font> <input type="text" size="2" name="page">页
 							<input type="submit" value="跳转">
 						</form>

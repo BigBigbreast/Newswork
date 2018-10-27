@@ -34,19 +34,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             {
                 alert("你输入的页数大于最大页数，页面将跳转到首页！");
                 
-                window.document.location.href = "showneedchecknews.action";                
+                window.document.location.href = "showneeddeletenews.action";                
                 return false;
             }           
             return true;
+            
+            $(function(){
+            	var btn=$("#delete");
+           		btn.click(function(){
+           			alert();
+           		})
+            })
         } 
-        
-        var ret = window.confirm("您确定要删除该条新闻吗?");
-		//当点击确定时 返回 true 
-		if(ret){
-   		 //do something 点确定
-		}else{
-    	//do otherthing 点取消
-		}   
 	</script>
   </head>
   
@@ -158,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<th>审核状态：</th>
 								<th>操作：</th>
 							</tr>
-							<s:iterator value="#session.needchecknews" var="news">
+							<s:iterator value="#session.neededitnews" var="news">
 								<tr>
 									<td><br><s:property value="#news.newsid" /></td>
 									<td width="50px">
@@ -172,8 +171,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td><br><s:property value="#news.newsissuer" /></td>
 									<td><br><s:property value="#news.newsstate" /></td>
 									<td>
-									<br><a
-										href="shouchecknewsinfo.action?newsid=<s:property value="#news.id"/>">删除</a></td>
+									<br><a id="delete"
+										href="shoudeletenewsinfo.action?newsid=<s:property value="#news.id"/>">删除</a></td>
 									<td>
 									<br><a
 										href="newsinfo.action?newsid=<s:property value="#news.id"/>">查看</a></td>
@@ -205,19 +204,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </s:if>
 
 						<s:else>
-							<a href="showneedchecknews.action?page=1">首页</a>
+							<a href="showneeddeletenews.action?page=1">首页</a>
             &nbsp;&nbsp;&nbsp;
             
-							<a	href="showneedchecknews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
+							<a	href="showneeddeletenews.action?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
 						</s:else>
 
 						<s:if
 							test="#request.pageBean.currentPage != #request.pageBean.totalPage">
 							
-							<a	href="showneedchecknews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
-            &nbsp;&nbsp;&nbsp;
+							<a	href="showneeddeletenews.action?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
+            &nbsp;&nbsp;&nbsp; 
             
-							<a	href="showneedchecknews.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
+							<a	href="showneeddeletenews.action?page=<s:property value="#request.pageBean.totalPage"/>">尾页</a>
 						</s:if>
 						<s:else>
             下一页&nbsp;&nbsp;&nbsp;尾页

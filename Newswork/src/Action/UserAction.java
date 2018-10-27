@@ -7,6 +7,8 @@ import org.apache.struts2.ServletActionContext;
 import org.hamcrest.core.IsNull;
 
 import com.google.gson.Gson;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.util.ValueStack;
 
 import Entity.User;
 import Service.UserService;
@@ -40,6 +42,8 @@ public class UserAction {
 		User user=userService.checklogin(name, pass);
 		Gson gson=new Gson();
 		result=gson.toJson(user);
+		ValueStack valueStack=ActionContext.getContext().getValueStack();
+        valueStack.setValue("#session.result", result);
 		return "success";		
 	}
 
